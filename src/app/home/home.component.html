@@ -1,0 +1,58 @@
+<div class="my-4 bg-white text-center">
+    <h1>Covid-19 Dashboard</h1>
+    <div class="row">
+        <div class="col py-4">
+            <div class="card">
+                <div class="card-header">
+                    Total Confirmed
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ totalConfirmed }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col py-4">
+            <div class="card">
+                <div class="card-header">
+                    Total Recovered
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ totalRecovered }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col py-4">
+            <div class="card">
+                <div class="card-header">
+                    Total Deaths
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ totalDeaths }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col py-4">
+            <div class="card">
+                <div class="card-header">
+                    Total Active
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ totalActive }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ngx-charts-bar-vertical
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="chartData"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel">
+</ngx-charts-bar-vertical>
+</div>

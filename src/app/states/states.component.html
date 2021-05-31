@@ -1,0 +1,5 @@
+<div class="col-lg-5 text-center">
+    <select class="form-control" id="statename" #state (change)="updatedState(state.value)">
+        <option *ngFor="let state of states" [value]="state" >{{ state }}</option>
+    </select>
+</div>
