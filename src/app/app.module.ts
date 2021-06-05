@@ -24,7 +24,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AppRoutingModule,
     HttpClientModule,
     NgxChartsModule
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

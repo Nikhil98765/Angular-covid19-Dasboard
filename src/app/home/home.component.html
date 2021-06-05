@@ -1,58 +1,102 @@
 <div class="my-4 bg-white text-center">
     <h1>Covid-19 Dashboard</h1>
-    <div class="row">
-        <div class="col py-4">
+    <div>
+        <div class="py-4">
             <div class="card">
-                <div class="card-header">
-                    Total Confirmed
-                </div>
                 <div class="card-body">
-                    <p class="card-text">{{ totalConfirmed }}</p>
+                    <div class="card-text">
+                        <span>Total Confirmed : </span>
+                         <span>{{ totalConfirmed }}</span></div>
+                    <ngx-charts-pie-chart
+                        [scheme]="colorScheme"
+                        [results]="confirmedChartData"
+                        [gradient]="gradient"
+                        [legend]="showLegend"
+                        [legendPosition]="legendPosition"
+                        [labels]="showLabels"
+                        [doughnut]="isDoughnut"
+                        >
+                    </ngx-charts-pie-chart>
                 </div>
             </div>
         </div>
-        <div class="col py-4">
+         <div class="py-4">
             <div class="card">
-                <div class="card-header">
-                    Total Recovered
-                </div>
                 <div class="card-body">
-                    <p class="card-text">{{ totalRecovered }}</p>
+                    <div class="card-text">
+                        <span>Total Recovered : </span>
+                         <span>{{ totalRecovered }}</span></div>
+                         <ngx-charts-pie-chart
+                        [scheme]="colorScheme"
+                        [results]="recoveredChartData"
+                        [gradient]="gradient"
+                        [legend]="showLegend"
+                        [legendPosition]="legendPosition"
+                        [labels]="showLabels"
+                        [doughnut]="isDoughnut"
+                        >
+                    </ngx-charts-pie-chart>
                 </div>
             </div>
         </div>
-        <div class="col py-4">
+        <div class="py-4">
             <div class="card">
-                <div class="card-header">
-                    Total Deaths
-                </div>
                 <div class="card-body">
-                    <p class="card-text">{{ totalDeaths }}</p>
+                    <div class="card-text">
+                        <span>Total Deceased : </span>
+                         <span>{{ totalDeaths }}</span></div>
+                         <ngx-charts-pie-chart
+                         [scheme]="colorScheme"
+                         [results]="deathsChartData"
+                         [gradient]="gradient"
+                         [legend]="showLegend"
+                         [legendPosition]="legendPosition"
+                         [labels]="showLabels"
+                         [doughnut]="isDoughnut"
+                         >
+                     </ngx-charts-pie-chart> 
                 </div>
             </div>
         </div>
-        <div class="col py-4">
+        <div class="py-4">
             <div class="card">
-                <div class="card-header">
-                    Total Active
-                </div>
                 <div class="card-body">
-                    <p class="card-text">{{ totalActive }}</p>
+                    <div class="card-text">
+                        <span>Total Active : </span>
+                         <span>{{ totalActive }}</span></div>
+                         <ngx-charts-pie-chart
+                         [scheme]="colorScheme"
+                         [results]="activeChartData"
+                         [gradient]="gradient"
+                         [legend]="showLegend"
+                         [legendPosition]="legendPosition"
+                         [labels]="showLabels"
+                         [doughnut]="isDoughnut"
+                         >
+                     </ngx-charts-pie-chart>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
-    <ngx-charts-bar-vertical
-    [view]="view"
-    [scheme]="colorScheme"
-    [results]="chartData"
-    [gradient]="gradient"
-    [xAxis]="showXAxis"
-    [yAxis]="showYAxis"
-    [legend]="showLegend"
-    [showXAxisLabel]="showXAxisLabel"
-    [showYAxisLabel]="showYAxisLabel"
-    [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel">
-</ngx-charts-bar-vertical>
+    
 </div>
+<table class="table table-bordered table-hover table-dark">
+    <thead>
+        <th>Sno.</th>
+        <th>State</th>
+        <th>Confirmed</th>
+        <th>Recovered</th>
+        <th>Deceased</th>
+        <th>Active</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let state of statesData; index as i">
+            <td>{{i+1}}</td>
+            <td>{{state.state}}</td>
+            <td>{{state.confirmed}}</td>
+            <td>{{state.recovered}}</td>
+            <td>{{state.deaths}}</td>
+            <td>{{state.active}}</td>
+        </tr>
+    </tbody>
+</table>

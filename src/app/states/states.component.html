@@ -3,3 +3,24 @@
         <option *ngFor="let state of states" [value]="state" >{{ state }}</option>
     </select>
 </div>
+
+<table class="table table-bordered table-hover table-dark">
+    <thead>
+        <th>Sno.</th>
+        <th>State</th>
+        <th>Confirmed</th>
+        <th>Recovered</th>
+        <th>Deceased</th>
+        <th>Active</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let state of stateData; index as i">
+            <td>{{i+1}}</td>
+            <td>{{state.districtName}}</td>
+            <td>{{state.confirmed}}</td>
+            <td>{{state.recovered}}</td>
+            <td>{{state.deceased}}</td>
+            <td>{{state.active}}</td>
+        </tr>
+    </tbody>
+</table>
