@@ -1,12 +1,14 @@
-<div class="my-4 bg-white text-center">
-    <h1>Covid-19 Dashboard</h1>
-    <div>
+<div class="state-data-wrapper bg-white text-center">
+    <h1>Statewise Data</h1>
+    <div class="card-charts">
         <ngx-charts-number-card
             [scheme]="colorScheme"
+            [view]="cardView"
             [results]="cardData"
             [cardColor]="cardColor">
         </ngx-charts-number-card>
     </div>
+    <div class="charts">
     <div class="form-check form-check-inline">
         <label class="form-check-label">
             Case Type :
@@ -36,8 +38,7 @@
             </label>
           </div>
     </div>
-    <div>
-        <div class="py-4">
+        <div class="home-charts">
                     <ngx-charts-pie-chart
                         [view]="view"
                         [scheme]="colorScheme"
@@ -64,7 +65,8 @@
                         </ngx-charts-bar-vertical>
         
     </div>
-</div>
+    </div>
+
 <table class="table table-bordered table-hover table-dark">
     <thead>
         <th>Sno.</th>
@@ -85,3 +87,4 @@
         </tr>
     </tbody>
 </table>
+</div>

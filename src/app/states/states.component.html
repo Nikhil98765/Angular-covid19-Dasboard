@@ -1,32 +1,13 @@
-<div class="col-lg-5 text-center">
+<div class="district-data-wrapper bg-white text-center">
+    <h1>Districtwise Data</h1>
+
+<div class="state-select">
     <select class="form-control" id="statename" #state (change)="updatedState(state.value)">
         <option *ngFor="let state of states" [value]="state" >{{ state }}</option>
     </select>
 </div>
 
-
-
-<ngx-charts-bar-horizontal
-  [view]="view"
-  [results]="barChartData"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel">
-</ngx-charts-bar-horizontal>
-
-<ngx-charts-advanced-pie-chart
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="barChartData"
-  [gradient]="gradient"
-  >
-</ngx-charts-advanced-pie-chart>
-
+<div  class="district-data">
 <table class="table table-bordered table-hover table-dark">
     <thead>
         <th>Sno.</th>
@@ -47,3 +28,30 @@
         </tr>
     </tbody>
 </table>
+
+
+<div class="district-charts">
+<ngx-charts-bar-horizontal
+  [view]="view"
+  [results]="barChartData"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel">
+</ngx-charts-bar-horizontal>
+
+<ngx-charts-advanced-pie-chart
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="barChartData"
+  [gradient]="gradient"
+  >
+</ngx-charts-advanced-pie-chart>
+</div>
+</div>
+
+</div>

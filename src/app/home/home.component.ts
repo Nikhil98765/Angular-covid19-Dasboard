@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   isDoughnut: boolean = false;
   legendPosition: string = 'right';
   view: any[] = [700, 400];
+
   colorScheme = {
     domain: ['#A10A28', '#5AA454', '#C7B42C', '#AAAAAA']
   };
@@ -38,6 +39,7 @@ export class HomeComponent implements OnInit {
 
   cardColor: string = '#232837';
   cardData = [];
+  cardView: any[] = [1000, 200];
   
 
   constructor(private dataservice: DataServiceService) { }

@@ -22,7 +22,7 @@ export class StatesComponent implements OnInit {
   gradient = false;
   showLegend = true;
   showXAxisLabel = true;
-  xAxisLabel = 'Cases';
+  xAxisLabel = 'Confirmed Cases';
   showYAxisLabel = true;
   yAxisLabel = 'Districts';
 
