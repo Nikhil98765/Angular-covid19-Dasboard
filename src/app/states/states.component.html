@@ -4,10 +4,33 @@
     </select>
 </div>
 
-<!-- <table class="table table-bordered table-hover table-dark">
+
+
+<ngx-charts-bar-horizontal
+  [view]="view"
+  [results]="barChartData"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel">
+</ngx-charts-bar-horizontal>
+
+<ngx-charts-advanced-pie-chart
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="barChartData"
+  [gradient]="gradient"
+  >
+</ngx-charts-advanced-pie-chart>
+
+<table class="table table-bordered table-hover table-dark">
     <thead>
         <th>Sno.</th>
-        <th>State</th>
+        <th>District</th>
         <th>Confirmed</th>
         <th>Recovered</th>
         <th>Deceased</th>
@@ -23,18 +46,4 @@
             <td>{{state.active}}</td>
         </tr>
     </tbody>
-</table> -->
-
-<ngx-charts-bar-vertical
-  [view]="view"
-  [results]="barChartData"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (select)="onSelect($event)">
-</ngx-charts-bar-vertical>
+</table>

@@ -22,9 +22,15 @@ export class StatesComponent implements OnInit {
   gradient = false;
   showLegend = true;
   showXAxisLabel = true;
-  xAxisLabel = 'Districts';
+  xAxisLabel = 'Cases';
   showYAxisLabel = true;
-  yAxisLabel = 'Cases';
+  yAxisLabel = 'Districts';
+
+  showLabels: boolean = true;
+  isDoughnut: boolean = false;
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
 
 
   constructor(private dataService: DataServiceService) { }
