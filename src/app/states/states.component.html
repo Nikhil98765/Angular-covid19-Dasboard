@@ -4,7 +4,7 @@
     </select>
 </div>
 
-<table class="table table-bordered table-hover table-dark">
+<!-- <table class="table table-bordered table-hover table-dark">
     <thead>
         <th>Sno.</th>
         <th>State</th>
@@ -23,4 +23,18 @@
             <td>{{state.active}}</td>
         </tr>
     </tbody>
-</table>
+</table> -->
+
+<ngx-charts-bar-vertical
+  [view]="view"
+  [results]="barChartData"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  (select)="onSelect($event)">
+</ngx-charts-bar-vertical>

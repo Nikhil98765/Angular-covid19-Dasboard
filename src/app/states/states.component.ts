@@ -9,9 +9,23 @@ import { DataServiceService } from '../services/data-service.service';
 })
 export class StatesComponent implements OnInit {
 
-  public states: string[];
-  private stateDistrictData = {};
+  public states: string[] = [];
+  public stateDistrictData = [];
   public stateData = [];
+  public barChartData = [];
+
+  view: any[] = [700, 400];
+
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Districts';
+  showYAxisLabel = true;
+  yAxisLabel = 'Cases';
+
 
   constructor(private dataService: DataServiceService) { }
 
@@ -37,5 +51,17 @@ export class StatesComponent implements OnInit {
   updatedState(state: string) {
     this.stateData = [];
     this.stateData = this.stateDistrictData[state];
+    this.prepareBarChartData(this.stateData);
+  }
+
+  prepareBarChartData(stateData) {
+    let data:{name: string, value: number}[] = [];
+    for(let i = 0; i < stateData.length; i++) {
+      data.push( {
+        name: stateData[i].districtName,
+        value: stateData[i].confirmed
+      });
+    }
+    this.barChartData = data;
   }
 }

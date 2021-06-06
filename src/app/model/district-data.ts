@@ -1,6 +1,6 @@
 export interface DistrictData {
     stateName: string,
-    districtName : String,
+    districtName : string,
     confirmed: number,
     active: number,
     recovered: number,
