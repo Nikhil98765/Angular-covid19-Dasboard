@@ -1,13 +1,45 @@
 <div class="my-4 bg-white text-center">
     <h1>Covid-19 Dashboard</h1>
     <div>
+        <ngx-charts-number-card
+            [scheme]="colorScheme"
+            [results]="cardData"
+            [cardColor]="cardColor">
+        </ngx-charts-number-card>
+    </div>
+    <div class="form-check form-check-inline">
+        <label class="form-check-label">
+            Case Type :
+          </label>
+        <div class="form-check">
+            <input class="form-check-input" #confirmed type="radio" name="flexRadioDefault" id="confirmed" value="confirmed" (click)="updateChartData(confirmed)" checked>
+            <label class="form-check-label" for="confirmed">
+              Confirmed
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" #recovered type="radio" name="flexRadioDefault" id="recovered" value="recovered" (click)="updateChartData(recovered)">
+            <label class="form-check-label" for="recovered">
+              Recovered
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" #deceased type="radio" name="flexRadioDefault" id="deceased" value="deaths" (click)="updateChartData(deceased)">
+            <label class="form-check-label" for="deceased">
+              Deceased
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" #active type="radio" name="flexRadioDefault" id="active" value="active" (click)="updateChartData(active)">
+            <label class="form-check-label" for="active">
+              Active
+            </label>
+          </div>
+    </div>
+    <div>
         <div class="py-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">
-                        <span>Total Confirmed : </span>
-                         <span>{{ totalConfirmed }}</span></div>
                     <ngx-charts-pie-chart
+                        [view]="view"
                         [scheme]="colorScheme"
                         [results]="confirmedChartData"
                         [gradient]="gradient"
@@ -17,68 +49,21 @@
                         [doughnut]="isDoughnut"
                         >
                     </ngx-charts-pie-chart>
-                </div>
-            </div>
-        </div>
-         <div class="py-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">
-                        <span>Total Recovered : </span>
-                         <span>{{ totalRecovered }}</span></div>
-                         <ngx-charts-pie-chart
-                        [scheme]="colorScheme"
-                        [results]="recoveredChartData"
+
+                    <ngx-charts-bar-vertical
+                        [view]="view"
+                        [results]="confirmedChartData"
                         [gradient]="gradient"
+                        [xAxis]="showXAxis"
+                        [yAxis]="showYAxis"
                         [legend]="showLegend"
-                        [legendPosition]="legendPosition"
-                        [labels]="showLabels"
-                        [doughnut]="isDoughnut"
-                        >
-                    </ngx-charts-pie-chart>
-                </div>
-            </div>
-        </div>
-        <div class="py-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">
-                        <span>Total Deceased : </span>
-                         <span>{{ totalDeaths }}</span></div>
-                         <ngx-charts-pie-chart
-                         [scheme]="colorScheme"
-                         [results]="deathsChartData"
-                         [gradient]="gradient"
-                         [legend]="showLegend"
-                         [legendPosition]="legendPosition"
-                         [labels]="showLabels"
-                         [doughnut]="isDoughnut"
-                         >
-                     </ngx-charts-pie-chart> 
-                </div>
-            </div>
-        </div>
-        <div class="py-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-text">
-                        <span>Total Active : </span>
-                         <span>{{ totalActive }}</span></div>
-                         <ngx-charts-pie-chart
-                         [scheme]="colorScheme"
-                         [results]="activeChartData"
-                         [gradient]="gradient"
-                         [legend]="showLegend"
-                         [legendPosition]="legendPosition"
-                         [labels]="showLabels"
-                         [doughnut]="isDoughnut"
-                         >
-                     </ngx-charts-pie-chart>
-                </div>
-            </div>
-        </div> 
+                        [showXAxisLabel]="showXAxisLabel"
+                        [showYAxisLabel]="showYAxisLabel"
+                        [xAxisLabel]="xAxisLabel"
+                        [yAxisLabel]="yAxisLabel">
+                        </ngx-charts-bar-vertical>
+        
     </div>
-    
 </div>
 <table class="table table-bordered table-hover table-dark">
     <thead>

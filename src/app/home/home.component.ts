@@ -9,85 +9,69 @@ import { DataServiceService } from '../services/data-service.service';
 })
 export class HomeComponent implements OnInit {
 
-  public totalConfirmed: number = 0;
-  public totalRecovered: number = 0;
-  public totalDeaths: number = 0;
-  public totalActive: number = 0;
+  public totalConfirmed: Object = {};
+  public totalRecovered: Object = {};
+  public totalDeaths: Object = {};
+  public totalActive: Object = {};
   public statesData: StateData[] = [];
   //charts Options
-  gradient: boolean = true;
+  gradient: boolean = false;
   showLegend: boolean = true;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
   legendPosition: string = 'right';
+  view: any[] = [700, 400];
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#A10A28', '#5AA454', '#C7B42C', '#AAAAAA']
   };
+  showXAxisLabel = true;
+  xAxisLabel = 'States';
+  showYAxisLabel = true;
+  yAxisLabel = 'Cases';
+  showXAxis = true;
+  showYAxis = true;
+
   confirmedChartData = [];
   recoveredChartData = [];
   deathsChartData = [];
   activeChartData = [];
+
+  cardColor: string = '#232837';
+  cardData = [];
   
 
   constructor(private dataservice: DataServiceService) { }
 
   ngOnInit(): void {
     this.dataservice.getStateWiseData().subscribe((data => {
-        this.totalConfirmed = data[0].confirmed;
-        this.totalActive = data[0].active;
-        this.totalDeaths = data[0].deaths;
-        this.totalRecovered = data[0].recovered;
+        this.totalConfirmed = { name: 'Confirmed', value:data[0].confirmed};
+        this.totalActive = { name: 'Active', value:data[0].active};
+        this.totalDeaths = { name: 'Deceased', value:data[0].deaths};
+        this.totalRecovered = { name: 'Recovered', value:data[0].recovered};
         data.splice(0, 1);
         this.statesData = data;
-        this.prepareConfirmedChartData();
-        this.prepareRecoveredChartData();
-        this.prepareDeathsChartData();
-        this.prepareActiveChartData();
+        this.prepareCardData();
+        this.prepareChartData('confirmed');
     }));
   }
 
-  prepareConfirmedChartData() {
+  prepareChartData(caseType: string) {
     let data:{name: string, value: number}[] = [];
-    for(let i = 0; i < this.statesData.length; i++) {
+    this.statesData.forEach((stateData:StateData) => {
       data.push( {
-        name: this.statesData[i].state,
-        value: this.statesData[i].confirmed
-      });
-    }
+            name: stateData.state,
+            value: stateData[caseType]
+           });
+    })
     this.confirmedChartData = data;
   }
 
-  prepareRecoveredChartData() {
-    let data:{name: string, value: number}[] = [];
-    for(let i = 0; i < this.statesData.length; i++) {
-      data.push( {
-        name: this.statesData[i].state,
-        value: this.statesData[i].recovered
-      });
-    }
-    this.recoveredChartData = data;
+  updateChartData(caseType: HTMLInputElement) {
+    this.prepareChartData(caseType.value);
   }
 
-  prepareDeathsChartData() {
-    let data:{name: string, value: number}[] = [];
-    for(let i = 0; i < this.statesData.length; i++) {
-      data.push( {
-        name: this.statesData[i].state,
-        value: this.statesData[i].deaths
-      });
-    }
-    this.deathsChartData = data;
+  prepareCardData() {
+    this.cardData = [this.totalConfirmed, this.totalActive, this.totalRecovered, this.totalDeaths];
   }
 
-  prepareActiveChartData() {
-    let data:{name: string, value: number}[] = [];
-    for(let i = 0; i < this.statesData.length; i++) {
-      data.push( {
-        name: this.statesData[i].state,
-        value: this.statesData[i].active
-      });
-    }
-    this.activeChartData = data;
-  }
-  
 }
