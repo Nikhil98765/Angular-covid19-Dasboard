@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { StatesComponent } from './states/states.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DataServiceService } from './services/data-service.service';
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     HttpClientModule,
     NgxChartsModule
     ],
-  providers: [],
+  providers: [
+    DataServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
